@@ -1,0 +1,984 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>科技與現代東亞的歷史共構 | Workshop on Techno-science and Modern East Asia</title>
+  <style>
+    :root {
+      --navy: #1a2f4b;
+      --navy-mid: #244060;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f7f3ec;
+      --text: #2c2c2c;
+      --text-light: #5a5a5a;
+      --border: #d6cfc3;
+      --white: #ffffff;
+      --accent: #3a6186;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', '宋體', serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 52px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.35);
+    }
+
+    .nav-brand {
+      color: var(--gold-light);
+      font-size: .85rem;
+      letter-spacing: .05em;
+      font-style: italic;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,.82);
+      text-decoration: none;
+      font-size: .78rem;
+      letter-spacing: .08em;
+      padding: .25rem .85rem;
+      border-left: 1px solid rgba(255,255,255,.1);
+      transition: color .2s;
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover { color: var(--gold-light); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, #1e3a5f 100%);
+      color: var(--white);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          45deg,
+          rgba(255,255,255,.015) 0px,
+          rgba(255,255,255,.015) 1px,
+          transparent 1px,
+          transparent 40px
+        );
+    }
+
+    .hero-inner { position: relative; max-width: 860px; margin: 0 auto; }
+
+    .hero-logo {
+      width: 110px;
+      height: auto;
+      margin-bottom: 1.8rem;
+      filter: brightness(1.15) drop-shadow(0 2px 8px rgba(0,0,0,.4));
+    }
+
+    .hero-subtitle-en {
+      font-size: .8rem;
+      letter-spacing: .18em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: .9rem;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .hero-title-zh {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: bold;
+      letter-spacing: .15em;
+      line-height: 1.35;
+      margin-bottom: .5rem;
+    }
+
+    .hero-title-en {
+      font-size: clamp(.9rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,.75);
+      font-style: italic;
+      margin-bottom: 2.2rem;
+      font-weight: normal;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 2rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem 3rem;
+      font-size: .9rem;
+      color: rgba(255,255,255,.85);
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .hero-meta-icon {
+      color: var(--gold-light);
+      font-size: 1rem;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 4rem 2rem; }
+
+    .section-inner { max-width: 920px; margin: 0 auto; }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-label {
+      font-size: .72rem;
+      letter-spacing: .2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: .5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.2rem, 3vw, 1.7rem);
+      color: var(--navy);
+      letter-spacing: .06em;
+    }
+
+    .section-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin: .8rem auto 0;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .about-col h3 {
+      color: var(--navy);
+      font-size: 1rem;
+      letter-spacing: .06em;
+      margin-bottom: .8rem;
+      padding-bottom: .4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-col p {
+      font-size: .92rem;
+      color: var(--text-light);
+      margin-bottom: .9rem;
+      line-height: 1.9;
+    }
+
+    .about-col a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .about-col a:hover { text-decoration: underline; }
+
+    /* ── TABLE LINKS ── */
+    .schedule-table a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .schedule-table a:hover { text-decoration: underline; }
+
+    /* ── PROGRAM ── */
+    .program { background: var(--cream); }
+
+    .program-date-banner {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: .7rem 1rem;
+      border-radius: 4px;
+      margin-bottom: 2rem;
+      font-size: .88rem;
+      letter-spacing: .1em;
+    }
+
+    .program-date-banner span { color: var(--gold-light); }
+
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .88rem;
+      background: var(--white);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    }
+
+    .schedule-table thead tr {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .schedule-table thead th {
+      padding: .7rem 1rem;
+      text-align: left;
+      font-weight: normal;
+      letter-spacing: .06em;
+      font-size: .78rem;
+      text-transform: uppercase;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .schedule-table tbody tr { border-bottom: 1px solid var(--border); }
+
+    .schedule-table tbody tr:last-child { border-bottom: none; }
+
+    .schedule-table td {
+      padding: .75rem 1rem;
+      vertical-align: top;
+    }
+
+    .schedule-table tr.break-row {
+      background: #f0ece3;
+    }
+
+    .schedule-table tr.break-row td {
+      color: var(--text-light);
+      font-style: italic;
+      text-align: center;
+    }
+
+    .schedule-table tr.session-row {
+      background: #eef3f8;
+    }
+
+    .schedule-table tr.session-header td {
+      background: #d9e4f0;
+      font-weight: bold;
+      color: var(--navy);
+    }
+
+    .time-cell {
+      white-space: nowrap;
+      color: var(--navy);
+      font-weight: bold;
+      font-size: .82rem;
+      min-width: 90px;
+    }
+
+    .session-name {
+      color: var(--navy);
+      font-weight: bold;
+      margin-bottom: .2rem;
+    }
+
+    .session-name-zh {
+      color: var(--text-light);
+      font-size: .82rem;
+    }
+
+    .chair-line {
+      font-size: .8rem;
+      color: var(--text-light);
+      margin-top: .25rem;
+      font-style: italic;
+    }
+
+    .presenter-block {
+      margin-bottom: .55rem;
+    }
+
+    .presenter-name {
+      font-weight: bold;
+      color: var(--navy);
+    }
+
+    .presenter-name-zh {
+      color: var(--text-light);
+      font-size: .82rem;
+      margin-left: .3rem;
+    }
+
+    .paper-title {
+      font-style: italic;
+      color: var(--text);
+      font-size: .85rem;
+    }
+
+    .paper-title-zh {
+      color: var(--text-light);
+      font-size: .8rem;
+    }
+
+    .tag-discussant {
+      display: inline-block;
+      font-size: .68rem;
+      background: var(--navy);
+      color: var(--white);
+      padding: .1rem .4rem;
+      border-radius: 3px;
+      margin-left: .3rem;
+      vertical-align: middle;
+      font-family: 'Arial', sans-serif;
+      letter-spacing: .04em;
+    }
+
+    /* ── SCHOLARS ── */
+    .scholars { background: var(--white); }
+
+    .scholars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .scholar-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem 1.1rem;
+      background: var(--cream);
+      transition: box-shadow .2s, transform .2s;
+    }
+
+    .scholar-card:hover {
+      box-shadow: 0 4px 16px rgba(26,47,75,.12);
+      transform: translateY(-2px);
+    }
+
+    .scholar-name {
+      font-weight: bold;
+      color: var(--navy);
+      font-size: .95rem;
+    }
+
+    .scholar-name-zh {
+      color: var(--text-light);
+      font-size: .82rem;
+      margin-left: .3rem;
+    }
+
+    .scholar-institution {
+      font-size: .78rem;
+      color: var(--text-light);
+      margin-top: .3rem;
+      line-height: 1.5;
+    }
+
+    .scholar-institution-zh {
+      font-size: .75rem;
+      color: #888;
+    }
+
+    /* ── VENUE ── */
+    .venue { background: var(--cream); }
+
+    .venue-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .venue-detail h3 {
+      color: var(--navy);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      padding-bottom: .4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .venue-item {
+      display: flex;
+      gap: .7rem;
+      margin-bottom: .8rem;
+      font-size: .9rem;
+    }
+
+    .venue-item-icon { color: var(--gold); flex-shrink: 0; }
+    .venue-item-label { color: var(--text-light); font-size: .8rem; }
+    .venue-item-value { color: var(--text); font-weight: bold; }
+
+    .venue-note {
+      font-size: .82rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      background: #f0ece3;
+      border-radius: 4px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.6);
+      text-align: center;
+      padding: 1.8rem 2rem;
+      font-size: .78rem;
+      letter-spacing: .04em;
+    }
+
+    footer a { color: var(--gold-light); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav { padding: 0 1rem; }
+      .nav-brand { display: none; }
+      .nav-links a { padding: .25rem .5rem; font-size: .72rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .venue-box { grid-template-columns: 1fr; }
+      .schedule-table td { padding: .55rem .6rem; }
+      .schedule-table thead th:nth-child(3),
+      .schedule-table td:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">科技與現代東亞的歷史共構</span>
+  <ul class="nav-links">
+    <li><a href="#about">關於 About</a></li>
+    <li><a href="#program">議程 Program</a></li>
+    <li><a href="#scholars">學者 Scholars</a></li>
+    <li><a href="#venue">地點 Venue</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <img src="data:image/png;base64,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" alt="Workshop Logo" class="hero-logo" />
+    <p class="hero-subtitle-en">Workshop · August 7, 2026</p>
+    <h1 class="hero-title-zh">科技與現代東亞的歷史共構</h1>
+    <p class="hero-title-en">The Historical Coproduction of Techno-science and Modern East Asia</p>
+    <div class="hero-divider"></div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-icon">📅</span>
+        <span>2026年8月7日（星期五）&nbsp;|&nbsp; Friday, 7 August 2026</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-icon">📍</span>
+        <span>中央研究院近代史研究所&nbsp;|&nbsp; Academia Sinica, Taipei</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-label">Introduction</p>
+      <h2 class="section-title">關於本工作坊</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-col">
+        <h3>工作坊基本構想</h3>
+        <p>本工作坊的目標，是在「東亞科技史」的專史基礎之上，進一步探究科技與醫療如何參與塑造近代東亞的形貌。換言之，我們將以科技與醫療為核心，探索東亞近代史的新視野。</p>
+        <p>首先，我們將借重「科技與社會」研究（Science, Technology and Society; STS）的核心洞察：科技不應被視為獨立於社會文化之外的自足領域，學者應探究科技發展過程中與之「共構」而生的社會與文化現象。</p>
+        <p>其次，我們將科技與社會「共構」的洞察轉化為歷史研究的視野，進一步探索目前國際STS學界較少關注的長程歷史性問題：東亞各國在容受與發展近代科技的歷史過程中，究竟萌生出哪些具體而特殊的社會、文化、體制與價值？除了科學史研究中成果豐碩的主題，如國家建構、經濟發展、殖民統治、環境改造、性別差異、基礎建設與現代性等之外，我們也將致力於拓展視野至科學史學者較少關注、但對東亞現代史極為重要的議題，例如「天與自然」、文明論述、普世主義、道德權威、戰爭動員、生命情感與精神性等。</p>
+        <p>透過重新追問近代史的一系列基本問題，我們希望探索科技在東亞「近代歷史巨變」中尚未充分彰顯的角色。這不僅有助於更具體地理解東亞科技的歷史形貌，也能反向促進東亞科技史的進一步發展，乃至參與當前蓬勃發展中的科技全球史（The Global History of Science）之建設。</p>
+
+        <h3 style="margin-top:1.5rem;">工作坊具體形式：圓桌論壇</h3>
+        <p>本工作坊原為慶祝近史所七十週年所籌劃的「近代史的新視野」系列會議之一，後納入近史所與二十世紀中國史學會合辦的國際會議<a href="https://2026imh.github.io/conference-2026/#/zh/home" target="_blank">「重構跨越台海的近代史：交纏、分歧與全球連結」</a>（2026年8月4–6日）之中，並於會議結束次日（8月7日）另行舉辦本單日工作坊。</p>
+        <p>本工作坊將採取「圓桌論壇」的形式，邀請學者從他們自身長期關懷的研究領域出發，簡要說明科技在其中可能扮演、但尚未充分受到重視的角色，發言時間約 7–10 分鐘，希望藉此邀請在場學者共同發想並開啟更為深入的討論。</p>
+        <p>除三場圓桌論壇之外，另安排一場討論與本工作坊主題密切相關的東亞科學史論文專輯：<a href="https://sites.google.com/view/historia-scientiarum-34-2/home" target="_blank"><em>Science Wars before the "Science Wars": East Asia as Method</em></a>（<em>Historia Scientiarum</em> 34(2)）。歡迎有興趣的朋友事先閱讀該專輯導論。</p>
+        <p>工作坊最後亦將討論如何建設以東亞為基地的科學史與STS學術網絡，包括與 History of Science Society 的合作，以及將於2027年在台灣舉辦的 Society for the Social Studies of Science 年會（4S）。</p>
+      </div>
+      <div class="about-col">
+        <h3>Conceptual Framework</h3>
+        <p>This workshop builds on the existing field of the history of science and technology in East Asia, and aims to investigate more broadly how science, technology, and medicine participated in shaping the contours of modern East Asia. In short, it explores new perspectives on modern East Asian history through the lens of science, technology, and medicine.</p>
+        <p>We draw on the core insight of Science, Technology and Society (STS) studies: science and technology should not be treated as a self-contained domain independent of society and culture. Scholars should investigate the social and cultural phenomena that are "coproduced" with technological development.</p>
+        <p>We translate this STS insight into a historical lens to explore questions rarely addressed in international STS scholarship: what specific social, cultural, institutional, and moral formations emerged as East Asian countries received and developed modern technoscience? Beyond well-established topics in the history of science — such as state-building, economic development, colonial governance, environmental transformation, gender, infrastructure, and modernity — we also seek to expand into themes less commonly studied by historians of science but central to modern East Asian history, including "Tian and Nature," discourses of civilization, universalism, moral authority, wartime mobilization, and vitality and spirituality.</p>
+        <p>By revisiting foundational questions of modern history, we hope to illuminate the underexplored role of technoscience in the great modern transformations of East Asia — deepening our understanding of the historical contours of East Asian technoscience, and contributing to the growing field of the Global History of Science.</p>
+
+        <h3 style="margin-top:1.5rem;">Format: Roundtable Discussions</h3>
+        <p>This workshop was originally planned as part of the series "New Perspectives on Modern History," organized in celebration of the 70th anniversary of the Institute of Modern History, Academia Sinica. It was subsequently incorporated into the international conference <a href="https://2026imh.github.io/conference-2026/#/zh/home" target="_blank"><em>"Restructuring Modern History across the Taiwan Strait: Entanglement, Divergence, and Global Connections"</em></a> (4–6 August 2026), co-organized by the Institute of Modern History and the Association for the History of Modern China — and is held the following day as a dedicated one-day workshop.</p>
+        <p>Using a roundtable format, each scholar will speak for approximately 7–10 minutes from their own research area, briefly sketching the role that technoscience may have played but has not yet received sufficient attention. This is intended to invite collective reflection and open deeper discussion.</p>
+        <p>In addition to three roundtable sessions, there will be a dedicated discussion of the journal special issue <a href="https://sites.google.com/view/historia-scientiarum-34-2/home" target="_blank"><em>Science Wars before the "Science Wars": East Asia as Method</em></a> (<em>Historia Scientiarum</em> 34(2)). Participants are welcome to read the introduction to the special issue in advance.</p>
+        <p>The final session will address the development of East Asia-based scholarly networks in the history of science and STS, including cooperation with the History of Science Society (HSS) and preparations for the 4S (Society for the Social Studies of Science) annual conference in Taiwan in 2027.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="program" id="program">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-label">Programme</p>
+      <h2 class="section-title">工作坊議程</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="program-date-banner">
+      <span>2026年8月7日（星期五）</span>　|　Friday, 7 August 2026　|
+      <span>中央研究院近代史研究所檔案館第二會議室</span>
+    </div>
+
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th style="width:9%">時間 Time</th>
+          <th style="width:22%">場次 Session</th>
+          <th style="width:69%">發表人與論文 Presenters &amp; Papers</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- Registration -->
+        <tr class="break-row">
+          <td class="time-cell">9:00–9:20</td>
+          <td colspan="2">報到 Registration</td>
+        </tr>
+
+        <!-- Opening -->
+        <tr>
+          <td class="time-cell">9:20–9:30</td>
+          <td>
+            <div class="session-name">開幕致詞與介紹</div>
+            <div class="session-name-zh">Opening Remarks and Introduction</div>
+            <div class="chair-line">主持人 Chair：<br/>Sean Hsiang-lin Lei 雷祥麟</div>
+          </td>
+          <td></td>
+        </tr>
+
+        <!-- RT1 -->
+        <tr>
+          <td class="time-cell">9:30–10:45</td>
+          <td>
+            <div class="session-name">圓桌論壇一</div>
+            <div class="session-name-zh">Roundtable 1</div>
+          </td>
+          <td>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Jongtae Lim</span><span class="presenter-name-zh">林宗台</span></div>
+              <div class="paper-title">Pre-modern Resources for a Modern Project: Cultural Legacies and the Making of Science and Technology in South Korea's Developmental State</div>
+              <div class="paper-title-zh">前現代資源與現代發展計畫：文化遺產與南韓發展型國家中科技的建構</div>
+            </div>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Akihisa Setoguchi</span><span class="presenter-name-zh">瀨戶口明久</span></div>
+              <div class="paper-title">Technoscience as Social Infrastructure: Rōdō Kagaku and the Monitoring of Human Bodies</div>
+              <div class="paper-title-zh">作為社會基礎設施的科技：勞動科學與人體的監測</div>
+            </div>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Wen-Ji Wang</span><span class="presenter-name-zh">王文基</span></div>
+              <div class="paper-title">Psy Sciences across Boundaries</div>
+              <div class="paper-title-zh">精神科學及其邊界</div>
+            </div>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Albert Wu</span><span class="presenter-name-zh">吳孟軒</span></div>
+              <div class="paper-title">Making 'Superstition': Religion, Medicine, and the Boundaries of Science in Nineteenth-Century East Asia</div>
+              <div class="paper-title-zh">製造『迷信』：十九世紀東亞的宗教、醫學與科學的邊界</div>
+            </div>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Sean Hsiang-lin Lei</span><span class="presenter-name-zh">雷祥麟</span></div>
+              <div class="paper-title">The Historical Co-production of Science, Civilization, and Tian (Nature) in Late Qing China</div>
+              <div class="paper-title-zh">科學、文明與天的歷史共構</div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Tea Break -->
+        <tr class="break-row">
+          <td class="time-cell">10:45–11:00</td>
+          <td colspan="2">茶敘 Tea Break</td>
+        </tr>
+
+        <!-- Science Wars -->
+        <tr>
+          <td class="time-cell">11:00–12:30</td>
+          <td>
+            <div class="session-name" style="font-style:italic;">Science Wars before the &ldquo;Science Wars&rdquo;</div>
+          </td>
+          <td>
+            <div class="paper-title" style="margin-bottom:.6rem;font-size:.88rem;">Science Wars before the &ldquo;Science Wars&rdquo;: East Asia as Method</div>
+            <div style="font-size:.82rem;margin-bottom:.3rem;">
+              <span style="font-weight:bold;color:var(--navy);">報告人 Presenters：</span>
+              Hansun Hsiung &nbsp;·&nbsp;
+              <span>Yasuhiro Okazawa <span style="color:var(--text-light);">岡澤康浩</span></span>
+            </div>
+            <div style="font-size:.82rem;">
+              <span class="tag-discussant">與談人 Discussants</span>
+              <span style="margin-left:.4rem;">Fa-ti Fan <span style="color:var(--text-light);">范發迪</span> &nbsp;·&nbsp; Wen-Hua Kuo <span style="color:var(--text-light);">郭文華</span></span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Lunch -->
+        <tr class="break-row">
+          <td class="time-cell">12:30–13:30</td>
+          <td colspan="2">午餐 Lunch Break</td>
+        </tr>
+
+        <!-- RT2 -->
+        <tr>
+          <td class="time-cell">13:30–14:45</td>
+          <td>
+            <div class="session-name">圓桌論壇二</div>
+            <div class="session-name-zh">Roundtable 2</div>
+          </td>
+          <td>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Shao-li Lu</span><span class="presenter-name-zh">呂紹理</span></div>
+              <div class="paper-title">Tropicality and Landscape Cultivation of Taiwan under Japanese Colonial Rule</div>
+              <div class="paper-title-zh">熱帶性與日治臺灣的地景改造</div>
+            </div>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Kato Shigeo</span><span class="presenter-name-zh">加藤茂生</span></div>
+              <div class="paper-title">Making Territory Knowable: Technoscience of Space in Imperial Governance and Nation-Building</div>
+              <div class="paper-title-zh">疆域的可知化：帝國治理與國家建構中的空間科技知識</div>
+            </div>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Wendy Fu</span><span class="presenter-name-zh">傅家倩</span></div>
+              <div class="paper-title">Science and the Environment</div>
+              <div class="paper-title-zh">科學與環境</div>
+            </div>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Kuang-Chi Hung</span><span class="presenter-name-zh">洪廣冀</span></div>
+              <div class="paper-title">Why Shengtai Xue Is Not Just Ecology: The Travels and Transformations of Ecology in the Twentieth-Century United States, Republican China, and Taiwan</div>
+              <div class="paper-title-zh">生態學為何不只是Ecology：Ecology的跨域傳播與流變</div>
+            </div>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Hsiao-pei Yen</span><span class="presenter-name-zh">嚴曉珮</span></div>
+              <div class="paper-title">Gender, Science and Modern China</div>
+              <div class="paper-title-zh">性別、科學與現代中國</div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Tea Break -->
+        <tr class="break-row">
+          <td class="time-cell">14:45–15:00</td>
+          <td colspan="2">茶敘 Tea Break</td>
+        </tr>
+
+        <!-- RT3 -->
+        <tr>
+          <td class="time-cell">15:00–16:15</td>
+          <td>
+            <div class="session-name">圓桌論壇三</div>
+            <div class="session-name-zh">Roundtable 3</div>
+          </td>
+          <td>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Lin-Chun Wu</span><span class="presenter-name-zh">吳翎君</span></div>
+              <div class="paper-title">The Transnational Introduction and Local Adaptation of Industrial Standardization: State Governance in Modern China</div>
+              <div class="paper-title-zh">工業標準化的跨國引進與在地轉化：近代中國的國家治理</div>
+            </div>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Arunabh Ghosh</span></div>
+              <div class="paper-title">Efficiency and Waste in Modern East Asian Techno-Science</div>
+              <div class="paper-title-zh">現代東亞科技中的效率與浪費</div>
+            </div>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Sao-Yang Hong</span><span class="presenter-name-zh">洪紹洋</span></div>
+              <div class="paper-title">Markets, Resources, and Technological Innovation in East Asian Economic History</div>
+              <div class="paper-title-zh">東亞經濟史中的市場、資源與科技創新</div>
+            </div>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Chen-Pang Yeang</span><span class="presenter-name-zh">楊振邦</span></div>
+              <div class="paper-title">Computing Technology in East Asia and the Global Value Chain</div>
+              <div class="paper-title-zh">東亞的計算科技及全球價值鏈</div>
+            </div>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Wayne Soon</span></div>
+              <div class="paper-title">Why SARS Reveals More About COVID in Taiwan Than You Think: Toward a Comparative and Global History of the Pandemic</div>
+              <div class="paper-title-zh">為何SARS較一般認知更能闡明臺灣之新冠疫情：邁向全球史視野下之疫情史研究</div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Tea Break -->
+        <tr class="break-row">
+          <td class="time-cell">16:15–16:30</td>
+          <td colspan="2">茶敘 Tea Break</td>
+        </tr>
+
+        <!-- Networks -->
+        <tr>
+          <td class="time-cell">16:30–17:30</td>
+          <td>
+            <div class="session-name">學術網絡建設</div>
+            <div class="session-name-zh">Building Networks for History of Science &amp; STS in East Asia<br/>東亞科學史與STS</div>
+            <div class="chair-line">主持人 Chair：<br/>Sean Hsiang-lin Lei 雷祥麟<br/>Fa-ti Fan 范發迪</div>
+          </td>
+          <td>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Shellen Wu &amp; Wendy Fu</span><span class="presenter-name-zh">吳曉 &amp; 傅家倩</span></div>
+              <div class="paper-title"><a href="https://hssonline.org/" target="_blank">History of Science Society (HSS) in East Asia</a></div>
+            </div>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Jongtae Lim</span><span class="presenter-name-zh">林宗台</span></div>
+              <div class="paper-title"><a href="https://isheastm.org" target="_blank">International Society for the History of Science, Technology and Medicine (ISHSTM)</a></div>
+              <div class="paper-title-zh"><a href="https://www.jstor.org/journal/eastasiascietech" target="_blank">East Asian Science, Technology and Medicine</a></div>
+            </div>
+            <div class="presenter-block">
+              <div><span class="presenter-name">Chia-ling Wu &amp; Wen-hua Kuo</span><span class="presenter-name-zh">吳嘉苓 &amp; 郭文華</span></div>
+              <div class="paper-title">4S in Taiwan 2027（<a href="https://www.4sonline.org/" target="_blank">Society for the Social Studies of Science</a>）</div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Dinner -->
+        <tr class="break-row">
+          <td class="time-cell">18:30</td>
+          <td colspan="2">晚宴 Dinner</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SCHOLARS -->
+<section class="scholars" id="scholars">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-label">Participants</p>
+      <h2 class="section-title">與會學者名單</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="scholars-grid">
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Akihisa Setoguchi</span><span class="scholar-name-zh">瀨戶口明久</span></div>
+        <div class="scholar-institution">Institute for Research in Humanities, Kyoto University</div>
+        <div class="scholar-institution-zh">京都大學人文研究所</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Albert Wu</span><span class="scholar-name-zh">吳孟軒</span></div>
+        <div class="scholar-institution">Institute of History and Philology, Academia Sinica</div>
+        <div class="scholar-institution-zh">中央研究院歷史語言研究所</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Arunabh Ghosh</span></div>
+        <div class="scholar-institution">Department of History, Harvard University</div>
+        <div class="scholar-institution-zh">哈佛大學歷史系</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Chen-Pang Yeang</span><span class="scholar-name-zh">楊振邦</span></div>
+        <div class="scholar-institution">Institute for the History &amp; Philosophy of Science &amp; Technology, University of Toronto</div>
+        <div class="scholar-institution-zh">多倫多大學科技史與科學哲學研究所</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Chia-ling Wu</span><span class="scholar-name-zh">吳嘉苓</span></div>
+        <div class="scholar-institution">Department of Sociology, National Taiwan University</div>
+        <div class="scholar-institution-zh">臺灣大學社會學系</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Fa-ti Fan</span><span class="scholar-name-zh">范發迪</span></div>
+        <div class="scholar-institution">Department of History, Binghamton University</div>
+        <div class="scholar-institution-zh">賓漢頓大學歷史系</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Hansun Hsiung</span></div>
+        <div class="scholar-institution">Institute of Medieval and Early Modern Studies, Durham University</div>
+        <div class="scholar-institution-zh">杜倫大學中世紀早期現代研究</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Hsiao-pei Yen</span><span class="scholar-name-zh">嚴曉珮</span></div>
+        <div class="scholar-institution">Institute of Science, Technology and Society, National Yang Ming Chiao Tung University</div>
+        <div class="scholar-institution-zh">陽明交通大學科技與社會研究所</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Jongtae Lim</span><span class="scholar-name-zh">林宗台</span></div>
+        <div class="scholar-institution">Department of Science Studies, Seoul National University</div>
+        <div class="scholar-institution-zh">國立首爾大學歷史系</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Kato Shigeo</span><span class="scholar-name-zh">加藤茂生</span></div>
+        <div class="scholar-institution">Graduate School of Human Sciences, Waseda University</div>
+        <div class="scholar-institution-zh">早稻田大學人類科學研究科</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Kuang-Chi Hung</span><span class="scholar-name-zh">洪廣冀</span></div>
+        <div class="scholar-institution">Department of Geography, National Taiwan University</div>
+        <div class="scholar-institution-zh">國立臺灣大學地理環境資源學系</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Lin-Chun Wu</span><span class="scholar-name-zh">吳翎君</span></div>
+        <div class="scholar-institution">National Taiwan Normal University</div>
+        <div class="scholar-institution-zh">國立臺灣師範大學歷史系</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Sao-Yang Hong</span><span class="scholar-name-zh">洪紹洋</span></div>
+        <div class="scholar-institution">Institute of Science, Technology and Society, National Yang Ming Chiao Tung University</div>
+        <div class="scholar-institution-zh">陽明交通大學科技與社會研究所</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Sean Hsiang-lin Lei</span><span class="scholar-name-zh">雷祥麟</span></div>
+        <div class="scholar-institution">Institute of Modern History, Academia Sinica</div>
+        <div class="scholar-institution-zh">中央研究院近代史研究所</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Shao-li Lu</span><span class="scholar-name-zh">呂紹理</span></div>
+        <div class="scholar-institution">Department of History, National Taiwan University</div>
+        <div class="scholar-institution-zh">臺灣大學歷史學系、陽明交通大學科技與社會研究所</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Shellen Wu</span><span class="scholar-name-zh">吳曉</span></div>
+        <div class="scholar-institution">Department of History, Lehigh University</div>
+        <div class="scholar-institution-zh">理海大學歷史系</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Wayne Soon</span></div>
+        <div class="scholar-institution">Department of Surgery &amp; Program in History of Science, Medicine, and Technology, University of Minnesota</div>
+        <div class="scholar-institution-zh">明尼蘇達大學外科部暨科學、醫學與技術史學程</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Wendy Fu</span><span class="scholar-name-zh">傅家倩</span></div>
+        <div class="scholar-institution">Institute of Modern History, Academia Sinica</div>
+        <div class="scholar-institution-zh">中央研究院近代史研究所</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Wen-Hua Kuo</span><span class="scholar-name-zh">郭文華</span></div>
+        <div class="scholar-institution">Institute of Science, Technology and Society, National Yang Ming Chiao Tung University</div>
+        <div class="scholar-institution-zh">陽明交通大學科技與社會研究所</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Wen-Ji Wang</span><span class="scholar-name-zh">王文基</span></div>
+        <div class="scholar-institution">Institute of Science, Technology and Society, National Yang Ming Chiao Tung University</div>
+        <div class="scholar-institution-zh">陽明交通大學科技與社會研究所</div>
+      </div>
+
+      <div class="scholar-card">
+        <div><span class="scholar-name">Yasuhiro Okazawa</span><span class="scholar-name-zh">岡澤康浩</span></div>
+        <div class="scholar-institution">Institute for Research in Humanities, Kyoto University</div>
+        <div class="scholar-institution-zh">京都大學人文研究所</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VENUE -->
+<section class="venue" id="venue">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-label">Location</p>
+      <h2 class="section-title">會議地點</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="venue-box">
+      <div class="venue-detail">
+        <h3>地點資訊 Venue Information</h3>
+        <div class="venue-item">
+          <span class="venue-item-icon">🏛</span>
+          <div>
+            <div class="venue-item-label">機構 Institution</div>
+            <div class="venue-item-value">中央研究院近代史研究所</div>
+            <div style="font-size:.82rem;color:var(--text-light);">Institute of Modern History, Academia Sinica</div>
+          </div>
+        </div>
+        <div class="venue-item">
+          <span class="venue-item-icon">🚪</span>
+          <div>
+            <div class="venue-item-label">會議室 Room</div>
+            <div class="venue-item-value">檔案館第二會議室</div>
+            <div style="font-size:.82rem;color:var(--text-light);">Archives Building, Conference Room 2</div>
+          </div>
+        </div>
+        <div class="venue-item">
+          <span class="venue-item-icon">📅</span>
+          <div>
+            <div class="venue-item-label">日期 Date</div>
+            <div class="venue-item-value">2026年8月7日（星期五）</div>
+            <div style="font-size:.82rem;color:var(--text-light);">Friday, 7 August 2026</div>
+          </div>
+        </div>
+        <div class="venue-item">
+          <span class="venue-item-icon">📍</span>
+          <div>
+            <div class="venue-item-label">地址 Address</div>
+            <div class="venue-item-value">115 台北市南港區研究院路二段128號</div>
+            <div style="font-size:.82rem;color:var(--text-light);">128 Academia Road, Section 2, Nangang, Taipei 115</div>
+          </div>
+        </div>
+      </div>
+      <div class="venue-detail">
+        <h3>背景脈絡 Context</h3>
+        <p style="font-size:.88rem;color:var(--text-light);line-height:1.9;">
+          本工作坊原為慶祝近史所七十週年所籌劃的「近代史的新視野」系列會議之一，後納入近史所與二十世紀中國史學會合辦之國際會議<a href="https://2026imh.github.io/conference-2026/#/zh/home" target="_blank">「重構跨越台海的近代史：交纏、分歧與全球連結」</a>（2026年8月4–6日）之後續活動。
+        </p>
+        <div class="venue-note">
+          This workshop is held the day after the international conference <em>"Restructuring Modern History across the Taiwan Strait: Entanglement, Divergence, and Global Connections"</em> (4–6 August 2026), co-organised by the Institute of Modern History, Academia Sinica and the Association for the History of Modern China.<br/><br/>
+          It was originally planned as part of the series "New Perspectives on Modern History" in celebration of the 70th anniversary of the Institute of Modern History.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>科技與現代東亞的歷史共構 &nbsp;|&nbsp; Workshop on The Historical Coproduction of Techno-science and Modern East Asia</p>
+  <p style="margin-top:.5rem;">August 7, 2026 &nbsp;·&nbsp; Institute of Modern History, Academia Sinica, Taipei</p>
+</footer>
+
+</body>
+</html>
